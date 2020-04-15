@@ -19,8 +19,9 @@ FILE_TYPES = {
     'png': 'image/png',
     'svg': 'image/svg+xml',
     'txt': 'text/plain',
-    'mp4': 'video/mp4',
     'mpeg': 'audio/mpeg',
+    'm4a': 'video/mp4',
+    'mp4': 'video/mp4',
 }
 
 
