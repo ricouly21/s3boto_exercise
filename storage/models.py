@@ -8,7 +8,7 @@ def store_file_dir(store_instance, filename):
 
 
 class Store(models.Model):
-    user = models.ForeignKey("auth.User", null=True, blank=True, on_delete=SET_NULL)
+    account = models.ForeignKey("accounts.Account", null=True, blank=True, on_delete=SET_NULL)
     name = models.CharField(max_length=250, blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
 

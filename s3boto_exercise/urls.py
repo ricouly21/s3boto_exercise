@@ -3,10 +3,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from accounts.views import AccountsViewSet, UsersViewSet
 from s3boto_exercise.settings import STATIC_URL, STATIC_ROOT
 from storage.views import StoreViewSet, StoreFileViewSet
 
 router = DefaultRouter()
+
+router.register("users", UsersViewSet, basename="users")
+router.register("accounts", AccountsViewSet, basename="accounts")
+
 router.register("store", StoreViewSet, basename="stores")
 router.register("store/(?P<store_pk>[^/.]+)/files", StoreFileViewSet, basename="store-files")
 

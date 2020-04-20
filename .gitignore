@@ -1,8 +1,15 @@
 .aws/**
 .idea/**
+
+**/migrations/*
+**/__pycache__/*
+
 *.sqlite3
 *.py~
 *.pyc
 *.pyc~
+
 static/**
 
+.local_config
+.local_scripts

@@ -6,9 +6,10 @@ from django.shortcuts import render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet, ModelViewSet
 
 from storage.models import StoreFile, Store
+from storage.serializers import StoreSerializer
 from utils.s3_helper import S3Helper
 
 FILE_TYPES = {
@@ -25,21 +26,21 @@ FILE_TYPES = {
 }
 
 
-class StoreViewSet(ViewSet):
+class StoreViewSet(ModelViewSet):
+    queryset = Store.objects.all().order_by("-pk")
+    serializer_class = StoreSerializer
     permission_classes = []
     authentication_classes = []
 
-    @staticmethod
-    def list(request, *args, **kwargs):
-        print(args)
-        print(kwargs)
-        return Response(HTTP_200_OK, status=HTTP_200_OK)
+    # @staticmethod
+    # def list(request, *args, **kwargs):
+    #     return Response(HTTP_200_OK, status=HTTP_200_OK)
 
-    @staticmethod
-    def retrieve(request, pk=None, *args, **kwargs):
-        print(args)
-        print(kwargs)
-        return Response(HTTP_200_OK, status=HTTP_200_OK)
+    # @staticmethod
+    # def retrieve(request, pk=None, *args, **kwargs):
+    #     print(args)
+    #     print(kwargs)
+    #     return Response(HTTP_200_OK, status=HTTP_200_OK)
 
     @action(methods=["POST"], detail=True)
     def upload(self, request, pk=None, *args, **kwargs):
